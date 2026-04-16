@@ -1,0 +1,1870 @@
+/**
+ * سريع - التصميم الرئيسي
+ * Saree3 Main Stylesheet
+ * Version: 2.0 - Ultra Modern 2026
+ * تصميم فاخر للعميل مع أنيميشن متقدم
+ */
+
+/* =====================================================
+   CSS Variables - نظام ألوان فاخر
+   ===================================================== */
+:root {
+    /* الألوان الرئيسية - Sunset Orange Theme */
+    --primary: #FF6B35;
+    --primary-dark: #E85A2A;
+    --primary-light: #FF8F65;
+    --primary-soft: #FFF1EB;
+    
+    /* الألوان الثانوية */
+    --secondary: #2E4053;
+    --secondary-dark: #1A2A3A;
+    --secondary-light: #4A627A;
+    
+    /* ألوان الحالات */
+    --success: #10B981;
+    --success-light: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-light: #FEF3C7;
+    --danger: #EF4444;
+    --danger-light: #FEE2E2;
+    --info: #3B82F6;
+    --info-light: #DBEAFE;
+    
+    /* الألوان المحايدة */
+    --white: #FFFFFF;
+    --black: #1F2937;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    
+    /* خلفيات متدرجة */
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #FF8F65 50%, #FFA07A 100%);
+    --gradient-dark: linear-gradient(135deg, var(--secondary) 0%, #3A5068 100%);
+    --gradient-success: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+    --gradient-warning: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    --gradient-danger: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+    --gradient-hero: linear-gradient(145deg, #FF6B35 0%, #FF4757 50%, #FF6B35 100%);
+    
+    /* الظلال - Soft Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-primary: 0 10px 25px -5px rgba(255, 107, 53, 0.3);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 20px 40px rgba(255, 107, 53, 0.15);
+    
+    /* الحدود والزوايا */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+    --radius-full: 9999px;
+    
+    /* المسافات */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    
+    /* الخطوط */
+    --font-primary: 'Cairo', 'Tajawal', sans-serif;
+    
+    /* التحولات والأنيميشن */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: 500ms cubic-bezier(0.65, 0, 0.35, 1);
+    
+    /* Z-Index Layers */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+    --z-toast: 800;
+}
+
+/* =====================================================
+   Reset & Base Styles
+   ===================================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    direction: rtl;
+    min-height: 100vh;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================
+   Typography
+   ===================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: clamp(28px, 5vw, 40px); }
+h2 { font-size: clamp(24px, 4vw, 32px); }
+h3 { font-size: clamp(20px, 3vw, 24px); }
+h4 { font-size: clamp(18px, 2.5vw, 20px); }
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover { color: var(--primary); }
+
+/* =====================================================
+   Main Header - Glassmorphism
+   ===================================================== */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+    padding: var(--spacing-sm) 0;
+    animation: slideDown 0.5s var(--transition-bounce);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-width: 80px;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.btn-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 20px;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.btn-icon:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-icon:active {
+    transform: scale(0.95);
+}
+
+/* زر السلة مع Badge */
+.cart-btn {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-primary);
+    animation: badgePop 0.3s var(--transition-bounce);
+}
+
+@keyframes badgePop {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* محدد الموقع */
+.location-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-soft);
+    border-radius: var(--radius-full);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+    border: 1px solid transparent;
+    animation: fadeInScale 0.4s var(--transition-bounce);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.location-selector:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.location-selector i:first-child {
+    font-size: 16px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* =====================================================
+   Main Content
+   ===================================================== */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+    min-height: calc(100vh - 56px - 70px);
+    animation: fadeIn 0.5s var(--transition-smooth);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.main-content.has-bottom-nav {
+    padding-bottom: calc(var(--spacing-2xl) + 70px);
+}
+
+/* =====================================================
+   Hero Section - Banner
+   ===================================================== */
+.hero-section {
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+}
+
+.hero-banner {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    height: 180px;
+    box-shadow: var(--shadow-xl);
+}
+
+.hero-banner .swiper-slide {
+    position: relative;
+    height: 180px;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 8s var(--transition-smooth);
+}
+
+.hero-banner:hover img {
+    transform: scale(1.1);
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    color: var(--white);
+    z-index: 2;
+    animation: slideInRight 0.6s var(--transition-bounce);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.banner-content h2 {
+    color: var(--white);
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.banner-content p {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Pagination Dots */
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+    opacity: 0.7;
+    transition: all var(--transition-base);
+}
+
+.swiper-pagination-bullet-active {
+    width: 24px;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    opacity: 1;
+}
+
+/* =====================================================
+   Categories Section - أقسام دائرية
+   ===================================================== */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gray-900);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 40px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    margin-right: var(--spacing-sm);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-card {
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-sm);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+}
+
+.category-card:hover .category-icon::before {
+    opacity: 1;
+}
+
+.category-icon i,
+.category-icon span {
+    position: relative;
+    z-index: 2;
+    transition: all var(--transition-base);
+}
+
+.category-card:hover .category-icon {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.category-card:hover .category-icon i,
+.category-card:hover .category-icon span {
+    color: var(--white);
+    filter: brightness(0) invert(1);
+}
+
+.category-card span:not(.category-icon span) {
+    font-weight: 600;
+    color: var(--gray-700);
+    transition: color var(--transition-base);
+}
+
+.category-card:hover span {
+    color: var(--primary);
+}
+
+/* =====================================================
+   Restaurant & Product Cards - تصميم فاخر
+   ===================================================== */
+.vendor-grid,
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.vendor-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-bounce);
+    cursor: pointer;
+    position: relative;
+    animation: cardAppear 0.5s var(--transition-smooth) backwards;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vendor-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.vendor-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.vendor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--transition-smooth);
+}
+
+.vendor-card:hover .vendor-image img {
+    transform: scale(1.12);
+}
+
+.vendor-badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    padding: 4px 12px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    z-index: 2;
+}
+
+.vendor-offer {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    padding: 4px 10px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    z-index: 2;
+    box-shadow: var(--shadow-primary);
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(255,107,53,0.5); }
+    50% { box-shadow: 0 0 20px rgba(255,107,53,0.8); }
+}
+
+.vendor-favorite {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    left: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--danger);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-md);
+    z-index: 2;
+}
+
+.vendor-favorite:hover {
+    transform: scale(1.2);
+    background: var(--danger);
+    color: var(--white);
+}
+
+.vendor-info {
+    padding: var(--spacing-md);
+}
+
+.vendor-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+}
+
+.vendor-name h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--gray-900);
+}
+
+.vendor-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    background: var(--success-light);
+    border-radius: var(--radius-full);
+    color: var(--success);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.vendor-rating i {
+    color: #FBBF24;
+}
+
+.vendor-desc {
+    color: var(--gray-500);
+    font-size: 13px;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.vendor-desc span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.vendor-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--gray-200);
+}
+
+.delivery-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--gray-600);
+    font-size: 13px;
+}
+
+.delivery-fee {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.min-order {
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+/* =====================================================
+   Product Card
+   ===================================================== */
+.product-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-bounce);
+    cursor: pointer;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.product-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s var(--transition-smooth);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-name {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--gray-900);
+}
+
+.product-desc {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-price {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.old-price {
+    font-size: 14px;
+    color: var(--gray-400);
+    text-decoration: line-through;
+}
+
+.add-to-cart {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--white);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-primary);
+    transition: all var(--transition-bounce);
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+}
+
+.product-card:hover .add-to-cart {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.add-to-cart:hover {
+    transform: scale(1.15);
+    box-shadow: 0 15px 30px rgba(255,107,53,0.4);
+}
+
+.add-to-cart:active {
+    transform: scale(0.9);
+}
+
+/* =====================================================
+   Featured Section - "وفر مع سريع"
+   ===================================================== */
+.featured-section {
+    background: var(--gradient-hero);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    animation: sectionGlow 3s infinite alternate;
+}
+
+@keyframes sectionGlow {
+    from { box-shadow: 0 10px 30px rgba(255,107,53,0.2); }
+    to { box-shadow: 0 20px 50px rgba(255,107,53,0.4); }
+}
+
+.featured-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.featured-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
+.featured-text h2 {
+    color: var(--white);
+    font-size: 28px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.featured-text p {
+    opacity: 0.95;
+    font-size: 16px;
+}
+
+.featured-offer {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255,255,255,0.3);
+    font-size: 20px;
+    font-weight: 800;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* =====================================================
+   Free Delivery Banner
+   ===================================================== */
+.free-delivery-banner {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+    border-right: 4px solid var(--primary);
+    transition: all var(--transition-base);
+}
+
+.free-delivery-banner:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateX(-5px);
+}
+
+.banner-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-soft);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--primary);
+    animation: shake 2s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
+    20%, 40%, 60%, 80% { transform: rotate(5deg); }
+}
+
+.banner-text {
+    flex: 1;
+    padding: 0 var(--spacing-lg);
+}
+
+.banner-text h3 {
+    margin-bottom: 4px;
+    color: var(--gray-900);
+}
+
+.banner-text p {
+    color: var(--gray-500);
+}
+
+.banner-btn {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-primary);
+}
+
+.banner-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(255,107,53,0.4);
+    color: var(--white);
+}
+
+/* =====================================================
+   Bottom Navigation - شريط سفلي فاخر
+   ===================================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(255, 107, 53, 0.1);
+    z-index: var(--z-fixed);
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    animation: slideUp 0.5s var(--transition-bounce);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    color: var(--gray-500);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition-bounce);
+    border-radius: var(--radius-full);
+    position: relative;
+}
+
+.bottom-nav-item i {
+    font-size: 22px;
+    transition: all var(--transition-bounce);
+}
+
+.bottom-nav-item.active {
+    color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.bottom-nav-item.active i {
+    transform: translateY(-3px);
+}
+
+.bottom-nav-item:hover {
+    color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.cart-icon-wrapper {
+    position: relative;
+}
+
+.cart-badge-nav {
+    position: absolute;
+    top: -6px;
+    left: -10px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-primary);
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* =====================================================
+   Side Menu - قائمة جانبية
+   ===================================================== */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-modal);
+    pointer-events: none;
+}
+
+.side-menu.active {
+    pointer-events: auto;
+}
+
+.side-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.side-menu.active .side-menu-overlay {
+    opacity: 1;
+}
+
+.side-menu-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 320px;
+    background: var(--white);
+    box-shadow: var(--shadow-xl);
+    transform: translateX(100%);
+    transition: transform var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.side-menu.active .side-menu-content {
+    transform: translateX(0);
+}
+
+.side-menu-header {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: var(--gradient-primary);
+    color: var(--white);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-dark);
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.user-details h3 {
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.user-details p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.side-menu-nav {
+    flex: 1;
+    padding: var(--spacing-md) 0;
+}
+
+.side-menu-nav ul {
+    list-style: none;
+}
+
+.side-menu-nav li a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--gray-700);
+    font-weight: 500;
+    transition: all var(--transition-base);
+    border-right: 3px solid transparent;
+    position: relative;
+}
+
+.side-menu-nav li a i {
+    width: 24px;
+    font-size: 20px;
+    color: var(--gray-500);
+    transition: all var(--transition-base);
+}
+
+.side-menu-nav li a:hover,
+.side-menu-nav li a.active {
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-right-color: var(--primary);
+}
+
+.side-menu-nav li a:hover i,
+.side-menu-nav li a.active i {
+    color: var(--primary);
+    transform: translateX(-3px);
+}
+
+.badge {
+    margin-right: auto;
+    padding: 2px 8px;
+    background: var(--danger);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+}
+
+.side-menu-footer {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--gray-200);
+}
+
+/* =====================================================
+   Login Page - تصميم فاخر
+   ===================================================== */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: patternMove 60s linear infinite;
+}
+
+@keyframes patternMove {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-60px, -60px); }
+}
+
+.login-box {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 400px;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-xl);
+    animation: loginPop 0.6s var(--transition-bounce);
+}
+
+@keyframes loginPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    80% {
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-logo img {
+    width: 100px;
+    margin-bottom: var(--spacing-md);
+    animation: logoSpin 1s var(--transition-bounce);
+}
+
+@keyframes logoSpin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.login-logo h2 {
+    color: var(--gray-900);
+    margin-bottom: 4px;
+}
+
+.login-logo p {
+    color: var(--gray-500);
+}
+
+.otp-input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.otp-input {
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--gray-900);
+    transition: all var(--transition-base);
+}
+
+.otp-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+    transform: scale(1.05);
+}
+
+.otp-input.filled {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+
+/* =====================================================
+   Checkout Steps - خطوات الدفع
+   ===================================================== */
+.checkout-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--gray-500);
+    transition: all var(--transition-base);
+}
+
+.step.active .step-number {
+    background: var(--gradient-primary);
+    color: var(--white);
+    box-shadow: var(--shadow-primary);
+    animation: stepActive 0.3s var(--transition-bounce);
+}
+
+@keyframes stepActive {
+    from { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    to { transform: scale(1); }
+}
+
+.step.completed .step-number {
+    background: var(--success);
+    color: var(--white);
+}
+
+.step.completed .step-number i {
+    display: block;
+}
+
+.step-title {
+    margin: 0 var(--spacing-md);
+    font-weight: 600;
+    color: var(--gray-500);
+}
+
+.step.active .step-title {
+    color: var(--primary);
+}
+
+.step-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gray-300);
+    margin: 0 var(--spacing-sm);
+}
+
+/* =====================================================
+   Cart Items - عناصر السلة
+   ===================================================== */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    animation: itemSlide 0.3s var(--transition-smooth);
+}
+
+@keyframes itemSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.cart-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.cart-item-image {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--gray-900);
+}
+
+.cart-item-options {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 4px;
+}
+
+.cart-item-price {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+    padding: 4px;
+}
+
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-sm);
+}
+
+.quantity-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.quantity-value {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.remove-item {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: var(--danger-light);
+    border-radius: var(--radius-full);
+    color: var(--danger);
+    cursor: pointer;
+    transition: all var(--transition-bounce);
+}
+
+.remove-item:hover {
+    background: var(--danger);
+    color: var(--white);
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* =====================================================
+   Order Summary - ملخص الطلب
+   ===================================================== */
+.order-summary {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 80px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    color: var(--gray-600);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-sm);
+    border-top: 2px dashed var(--gray-300);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--gray-900);
+}
+
+/* =====================================================
+   Wheel of Fortune - دولاب الحظ
+   ===================================================== */
+.wheel-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) 0;
+}
+
+.wheel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: var(--shadow-xl);
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    border: 8px solid var(--white);
+    background: var(--gradient-primary);
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -15px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 0;
+    height: 0;
+    border-right: 25px solid transparent;
+    border-left: 25px solid transparent;
+    border-top: 40px solid var(--primary);
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    z-index: 10;
+}
+
+.spin-btn {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary);
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    z-index: 20;
+    transition: all var(--transition-bounce);
+    animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
+    50% { box-shadow: 0 0 0 20px rgba(255,107,53,0); }
+}
+
+.spin-btn:hover {
+    transform: translate(50%, -50%) scale(1.1);
+    background: var(--primary);
+    color: var(--white);
+}
+
+.spin-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    animation: none;
+}
+
+/* =====================================================
+   Toast Notifications
+   ===================================================== */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.toast {
+    min-width: 280px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transform: translateX(120%);
+    transition: transform var(--transition-bounce);
+    border-right: 4px solid;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-success {
+    border-right-color: var(--success);
+}
+
+.toast-success i {
+    color: var(--success);
+}
+
+.toast-error {
+    border-right-color: var(--danger);
+}
+
+.toast-error i {
+    color: var(--danger);
+}
+
+.toast-info {
+    border-right-color: var(--info);
+}
+
+.toast-info i {
+    color: var(--info);
+}
+
+/* =====================================================
+   Loading States
+   ===================================================== */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--gray-200);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes skeletonLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* =====================================================
+   Modal Styles
+   ===================================================== */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    transform: scale(0.9) translateY(30px);
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--danger);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    max-height: calc(90vh - 70px);
+}
+
+/* =====================================================
+   Responsive Design - Mobile First
+   ===================================================== */
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .category-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+    }
+    
+    .vendor-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-banner {
+        height: 150px;
+    }
+    
+    .featured-section {
+        padding: var(--spacing-lg);
+    }
+    
+    .featured-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .vendor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =====================================================
+   Print Styles
+   ===================================================== */
+@media print {
+    .main-header,
+    .bottom-nav,
+    .side-menu,
+    .toast-container {
+        display: none !important;
+    }
+}
+
+/* =====================================================
+   Accessibility
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus Visible */
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Selection */
+::selection {
+    background: var(--primary);
+    color: var(--white);
+}
+
+::-moz-selection {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
